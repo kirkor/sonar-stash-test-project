@@ -17,5 +17,7 @@ public class DummyService {
         }
 
         new FileInputStream("/");
+
+        // Ala ma kota
     }
 }
