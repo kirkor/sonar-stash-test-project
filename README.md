@@ -24,4 +24,18 @@ sonar.stash.project.base.dir=E:/Jenkins/workspace/CI03
 
 ```
 
-I'm executing sonar scanner on Jenkins, my working dir is ```E:/Jenkins/workspace/CI03```. Sonar project are located in ```src/``` dir like in this repo. 
+I'm executing sonar scanner on Jenkins, my working dir is ```E:/Jenkins/workspace/CI03```. Sonar project are located in ```src/``` dir like in this repo.
+
+## Latest update
+There is a way to workaround this problem without any code change. In fact code change proposed here: https://github.com/AmadeusITGroup/sonar-stash/pull/56 is not relevant anymore. It's a matter of configuration.  
+
+To workaround problem with ```Comment "squid:S00112" cannot be pushed to Stash``` you need to move ```sonar-project.properties``` to GIT root, then change ```sonar.modules=src/lib,src/webapp``` to apply full path to module like in example.
+
+In Jenkins sonar scanner you can set properties as fallow:
+```
+sonar.analysis.mode=preview
+sonar.stash.notification=true
+sonar.stash.project=sp
+sonar.stash.repository=multimodule
+sonar.stash.pullrequest.id=*****
+```
